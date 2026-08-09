@@ -1,0 +1,14 @@
+# Compiled output — never commit binaries
+*.exe
+*.out
+*.o
+*.obj
+a.out
+
+# Editor / machine-specific settings
+.vscode/
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
