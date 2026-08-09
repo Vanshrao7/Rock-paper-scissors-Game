@@ -4,6 +4,7 @@
 *.o
 *.obj
 a.out
+PLAN.md
 
 # Editor / machine-specific settings
 .vscode/
