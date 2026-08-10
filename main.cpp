@@ -1,13 +1,23 @@
 #include <iostream>
-#include <cstdlib>
+#include <random>
 #include <string>
 using namespace std;
+
+random_device seed;
+mt19937 engine{seed()};
+
+int Rand()
+{
+
+    uniform_int_distribution get{0, 2};
+    return get(engine);
+}
 
 void play(char yourChoice, int &u, int &me, int &draw)
 {
     string myChoice;
     int myChoiceNum;
-    myChoiceNum = rand() % 3;
+    myChoiceNum = Rand();
     if (myChoiceNum == 0)
     {
         myChoice = "Rock";
