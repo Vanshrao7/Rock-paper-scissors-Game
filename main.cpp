@@ -1,5 +1,6 @@
 #include <iostream>
 #include "play.h"
+#include <vector>
 using namespace std;
 
 int main()
@@ -11,12 +12,14 @@ int main()
     int draw = 0;
     char yourChoice;
     cin >> yourChoice;
+    vector<int> count(3, 0);
     while (yourChoice != 'q')
     {
-        play(yourChoice, u, me, draw);
+
+        Play(yourChoice, u, me, draw, count);
         cout << "Your choice: r/p/s and q to quit: ";
         cin >> yourChoice;
     }
-    play(yourChoice, u, me, draw);
+    Play(yourChoice, u, me, draw, count);
     cout << endl;
 }
