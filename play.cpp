@@ -6,6 +6,9 @@
 using namespace std;
 void Play(char yourChoice, int &u, int &me, int &draw, vector<int> &count)
 {
+    string myChoice;
+    int myChoiceNum;
+    // Counting number of each play
     if (yourChoice == 'r')
     {
         count.at(0) = count.at(0) + 1;
@@ -19,9 +22,32 @@ void Play(char yourChoice, int &u, int &me, int &draw, vector<int> &count)
         count.at(2) = count.at(2) + 1;
     }
 
-    string myChoice;
-    int myChoiceNum;
-    myChoiceNum = Rand();
+    // Rand choosing by computer
+    if (count.at(0) + count.at(1) + count.at(2) < 10)
+    {
+        myChoiceNum = Rand();
+    }
+    // computer choosing after having data
+    else
+    {
+        if (count.at(0) > count.at(1) && count.at(0) > count.at(2))
+        {
+            myChoiceNum = 1;
+        }
+        else if (count.at(1) > count.at(0) && count.at(1) > count.at(2))
+        {
+            myChoiceNum = 2;
+        }
+        else if (count.at(2) > count.at(0) && count.at(2) > count.at(1))
+        {
+            myChoiceNum = 0;
+        }
+        else
+        {
+            myChoiceNum = Rand();
+        }
+    }
+
     if (myChoiceNum == 0)
     {
         myChoice = "Rock";
@@ -34,6 +60,9 @@ void Play(char yourChoice, int &u, int &me, int &draw, vector<int> &count)
     {
         myChoice = "Scissors";
     }
+
+    // printing result of each game
+
     if ((myChoice == "Rock" && yourChoice == 'p') || (myChoice == "Paper" && yourChoice == 's') || (myChoice == "Scissors" && yourChoice == 'r'))
     {
         u = u + 1;
@@ -50,12 +79,14 @@ void Play(char yourChoice, int &u, int &me, int &draw, vector<int> &count)
         cout << "I played " << myChoice << ", It's a draw" << "             [you - " << u << " me - " << me << " draw - " << draw << "]" << endl;
     }
 
+    // printing final result with count of each selection by player
     else if (yourChoice == 'q')
     {
-        cout << "Final: you = " << u << " me = " << me << "draw = " << draw << endl;
+        cout << "Final: you = " << u << " me = " << me << " draw = " << draw << endl;
         cout << "You played: rock " << count.at(0) << ", paper " << count.at(1) << ", scissors " << count.at(2) << endl;
     }
 
+    // if player choose something wrong
     else
     {
         cout << "something went wrong" << endl;
